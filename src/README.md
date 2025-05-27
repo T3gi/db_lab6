@@ -1,7 +1,7 @@
 ## Requirements
 
-- Python
-- MySQL database
+- Python 3.9+
+- MySQL 5.7 або вище
 - pip
 
 ## Installation
@@ -12,32 +12,25 @@
    cd your-repo
    ```
 
-2. Create a .env file in the root folder:
-   ```ini
-   DB_HOST=localhost
-   DB_PORT=3306
-   DB_NAME=db_name
-   DB_USER=user
-   DB_PASSWORD=password
-   JWT_SECRET_KEY=secretkey
-   ```
-
-3. Install dependencies (or do it in venv):
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
   
-4. Run database migrations:
-   ```bash
-   python db/migrate.py
+3. Set connection to MySQL in database.py:
+   ```
+   DATABASE_URL = "mysql+pymysql://<user>:<password>@localhost/<dbname>"
    ```
   
-5. Seed the database with initial data:
-   ```bash
-   python db/seed.py
+4. Create MySQL database:
+   ```
+   CREATE DATABASE your_db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
 
-6. Start the development server:
-   ```bash
-   python app.py
+
+5. Start the server:
    ```
+   uvicorn main:app --reload
+   ```
+
+6. Check your server on the `http://127.0.0.1:8000`
