@@ -9,6 +9,11 @@ class UserCreate(UserBase):
     password: str
     role_id: Optional[int] = None
 
+class UserUpdate(UserBase):
+    username: str
+    password: str
+    role_id: int | None = None
+
 class User(UserBase):
     id: int
     created_at: datetime.datetime
@@ -23,6 +28,11 @@ class PostBase(BaseModel):
 class PostCreate(PostBase):
     user_id: int
 
+class PostUpdate(PostBase):
+    title: str
+    content: str
+    user_id: int
+
 class Post(PostBase):
     id: int
     created_at: datetime.datetime
@@ -35,6 +45,11 @@ class CommentBase(BaseModel):
     content: str
 
 class CommentCreate(CommentBase):
+    user_id: int
+    post_id: int
+
+class CommentUpdate(CommentBase):
+    content: str
     user_id: int
     post_id: int
 
